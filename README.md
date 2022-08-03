@@ -2,7 +2,7 @@
 
 > Is PeQa a knight? A samurai? A robot? No! It is a MASSIVE **Pe**rsian **Q**uestion **A**nswering dataset! :)
 
-PeQa dataset is a huge dataset of 14 million Persian tweets from tweeter that is meticulously processed to create a rich collection of 420,000 pairs of question-answer data. Therefore, this valuable dataset can be used in many chatbot or other question-answering projects. Although over 14 million pairs of questions and answers were extracted, bout 800,000 pairs are published in .CSV cleaned format for now in this repository for researcher's use.
+PeQa dataset is a huge dataset of 14 million Persian tweets from tweeter that is meticulously processed to create a rich collection of 420,000 pairs of question-answer data. Therefore, this valuable dataset can be used in many chatbot or other question-answering projects. Although over 14 million pairs of questions and answers were extracted, bout 400,000 pairs are published in .CSV cleaned format for now in this repository for researcher's use.
 |  | Total | Unique Questions | Unique Answers 
 | :---: | :------------: | :----------------: | :------------------: |
 | **Data Count** | 436,072  |127,752  |   308,320|         
