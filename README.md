@@ -22,6 +22,7 @@ Each pair of data consist of a tweet and it's relevant reply, which are consider
 
 
 ## Quick Links
+- The raw data is too large to be shown in a repository, you can download it from [here](https://drive.google.com/file/d/1sw1q8iqjGYyHDXU6eIsVtC4PummJvqQv/view?usp=sharing).
 - We have trained a baseline model based on transformers to check the dataset. you can also check it out on [Google Colab](https://colab.research.google.com/drive/1ErYuA6Rh582AS-BVKBbqw3gzUbZgAWN7?usp=sharing).
 - [PeQa paper]() soon!
 - [PeQa Blog Post]()
