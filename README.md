@@ -108,4 +108,4 @@ We would like to acknowledge both [MUT DeepLearning Lab](https://github.com/mut-
 
 ## License
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](https://github.com/ZahraArshia/PeQa/blob/main/LICENSE) licensed.
