@@ -27,6 +27,69 @@ Each pair of data consist of a tweet and it's relevant reply, which are consider
 - [PeQa Blog Post]()
 
 ## Getting Started
+### Requirements
+The testbench requires [PyTorch](https://pytorch.org/) framework. There are multiple ways to install it:
+- Pip:
+```
+!pip install torch===[version]
+```
+- Anaconda
+```
+conda install python=3.6 pytorch torchvision
+```
+### Encoder
+**Computation Graph:**
+
+   1) Convert word indexes to embeddings.
+   2) Pack padded batch of sequences for RNN module.
+   3) Forward pass through GRU.
+   4) Unpack padding.
+   5) Sum bidirectional GRU outputs.
+   6) Return output and final hidden state.
+
+**Inputs:**
+
+-  ``input_seq``: batch of input sentences; shape=\ *(max_length,
+   batch_size)*
+-  ``input_lengths``: list of sentence lengths corresponding to each
+   sentence in the batch; shape=\ *(batch_size)*
+-  ``hidden``: hidden state; shape=\ *(n_layers x num_directions,
+   batch_size, hidden_size)*
+
+**Outputs:**
+
+-  ``outputs``: output features from the last hidden layer of the GRU
+   (sum of bidirectional outputs); shape=\ *(max_length, batch_size,
+   hidden_size)*
+-  ``hidden``: updated hidden state from GRU; shape=\ *(n_layers x
+   num_directions, batch_size, hidden_size)*
+
+### Decoder
+**Computation Graph:**
+
+1) Get embedding of current input word. 
+2) Forward through unidirectional GRU. 
+3) Calculate attention weights from the current GRU output from (2). 
+4) Multiply attention weights to encoder outputs to get new "weighted sum" context vector. 
+5) Concatenate weighted context vector and GRU output using Luong eq. 5. 
+6) Predict next word using Luong eq. 6 (without softmax). 
+7) Return output and final hidden state.
+
+**Inputs:**
+
+- ``input_step``: one time step (one word) of input sequence batch; shape=\ (1, batch_size)
+- ``last_hidden``: final hidden layer of GRU; shape=\ (n_layers x num_directions, batch_size, hidden_size)
+- ``encoder_outputs``: encoder model’s output; shape=\ (max_length, batch_size, hidden_size)
+
+**Outputs:**
+
+- ``output``: softmax normalized tensor giving probabilities of each word being the correct next word in the decoded sequence; shape=\ (batch_size, voc.num_words)
+- ``hidden``: final hidden state of GRU; shape=\ (n_layers x num_directions, batch_size, hidden_size)
+
+### Run Training
+Run the `Configure training/optimization` block if you want to train the model.
+First we set ***training parameters***, then we ***initialize*** our optimizers, and finally we call the ``trainIters`` function to run our training iterations.
+
 
 ## Contributing
 
@@ -40,7 +103,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-I would like to acknowledge both [MUT DeepLearning Lab]() and [MUT NLP lab]() for their financial support.
+We would like to acknowledge both [MUT DeepLearning Lab](https://github.com/mut-deep) and [MUT NLP lab](https://github.com/mutnlp) for their financial support.
 
 ## License
 
