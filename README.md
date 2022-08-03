@@ -71,8 +71,8 @@ conda install python=3.6 pytorch torchvision
 2) Forward through unidirectional GRU. 
 3) Calculate attention weights from the current GRU output from (2). 
 4) Multiply attention weights to encoder outputs to get new "weighted sum" context vector. 
-5) Concatenate weighted context vector and GRU output using Luong eq. 5. 
-6) Predict next word using Luong eq. 6 (without softmax). 
+5) Concatenate weighted context vector and GRU output.
+6) Predict next word(without softmax).
 7) Return output and final hidden state.
 
 **Inputs:**
